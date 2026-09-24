@@ -4,9 +4,9 @@
 #include <iostream>
 #include <windows.h>
 // === БЛОК ПОДКЛЮЧЕНИЙ: каждый участник добавляет свой заголовочный файл ===
-// #include "teplov.h"
-// #include "prokhorov.h"
 #include "kozlov.h"
+#include "prokhorenkov.h"
+#include "teplov.h"
 // === КОНЕЦ БЛОКА ПОДКЛЮЧЕНИЙ ===
 using namespace std;
 
@@ -14,37 +14,87 @@ int main() {
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
     int choice;
-    double	x,	y;
+    double x, y;
+    double a;
+    double t, h;
     do {
         cout << "\n=== Командный проект: сборник расчётов ===\n";
 
         // === БЛОК МЕНЮ: каждый участник добавляет свои пункты ===
-        cout <<	"7. Площадь прямоугольного треугольника\n";
-        cout <<	"8. Гипотенуза прямоугольного треугольника\n";
-        // === КОНЕЦ БЛОКА МЕНЮ ===
+        cout << "1. Найти скорость падения\n";
+        cout << "2. Найти высоту падения\n";
+        cout << "3. Найти время падения\n";
+        cout << "4. Гектары -> m2\n";
+        cout << "5. m2 -> гектары\n";
+        cout << "6. Гектары -> сотки\n";
+        cout << "7. Площадь прямоугольного треугольника\n";
+        cout << "8. Гипотенуза прямоугольного треугольника\n";
 
+        // === КОНЕЦ БЛОКА МЕНЮ ===
         cout << "0. Выход\n";
         cout << "Выберите пункт: ";
         cin >> choice; 
 
         switch (choice) {
-        // === БЛОК ОБРАБОТКИ: каждый участник добавляет свои case ===
-        case 7:
-        cout <<	"Введите стороны x и y : ";
-		cin	>> x >> y;
-		cout << "Площадь = " <<	rightTriangleArea(x, y) << "\n";
-        break;
-        case 8:
-		cout << "Введите стороны x и y : ";
-		cin	>> x >> y;
-        cout << "Гипотенуза = "	<< hypotenuse(x, y) << "\n";
-		break;
-        // === КОНЕЦ БЛОКА ОБРАБОТКИ ===
-        case 0:
-            cout << "Работа завершена.\n";
-            break;
-        default:
-            cout << "Такого пункта нет.\n";
+            // === БЛОК ОБРАБОТКИ: каждый участник добавляет свои case ===
+            case 1:
+                cout << "Введите время t: ";
+                cin >> t;
+                cout << "Скорость v = " << fallSpeed(t) << "\n";
+                break;
+            case 2:
+                cout << "Введите время t: ";
+                cin >> t;
+                cout << "Высота h = " << fallHeight(t) << "\n";
+                break;
+            case 3:
+                cout << "Введите высоту h: ";
+                cin >> h;
+                cout << "Время падения t = " << fallTime(h) << "\n";
+                break;
+            case 4:
+                cout << "Введите площадь в гектарах: ";
+                cin >> a;
+                if (a < 0) {
+                    cout << "Площадь не может быть отрицательной.\n";
+                    break;
+                }
+                cout << a << " гектаров = " << haToM2(a) << " м2\n";
+                break;
+            case 5:
+                cout << "Введите площадь в квадратных метрах: ";
+                cin >> a;
+                if (a < 0) {
+                    cout << "Площадь не может быть отрицательной.\n";
+                    break;
+                }
+                cout << a << " м2 = " << m2ToHa(a) << " гектаров\n";
+                break;
+            case 6:
+                cout << "Введите площадь в гектарах: ";
+                cin >> a;
+                if (a < 0) {
+                    cout << "Площадь не может быть отрицательной.\n";
+                    break;
+                }
+                cout << a << " гектаров = " << haToSotka(a) << " соток\n";
+                break;
+            case 7:
+                cout <<	"Введите стороны x и y : ";
+                cin	>> x >> y;
+                cout << "Площадь = " <<	rightTriangleArea(x, y) << "\n";
+                break;
+            case 8:
+                cout << "Введите стороны x и y : ";
+                cin	>> x >> y;
+                cout << "Гипотенуза = "	<< hypotenuse(x, y) << "\n";
+                break;
+            // === КОНЕЦ БЛОКА ОБРАБОТКИ ===
+            case 0:
+                cout << "Работа завершена.\n";
+                break;
+            default:
+                cout << "Такого пункта нет.\n";
         }
 
         } while (choice != 0);
