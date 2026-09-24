@@ -4,9 +4,9 @@
 #include <iostream>
 #include <windows.h>
 // === БЛОК ПОДКЛЮЧЕНИЙ: каждый участник добавляет свой заголовочный файл ===
+#include "kozlov.h"
 #include "prokhorenkov.h"
 #include "teplov.h"
-// #include "kozlov.h"
 // === КОНЕЦ БЛОКА ПОДКЛЮЧЕНИЙ ===
 using namespace std;
 
@@ -14,6 +14,7 @@ int main() {
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
     int choice;
+    double x, y;
     double a;
     double t, h;
     do {
@@ -26,6 +27,8 @@ int main() {
         cout << "4. Гектары -> m2\n";
         cout << "5. m2 -> гектары\n";
         cout << "6. Гектары -> сотки\n";
+        cout << "7. Площадь прямоугольного треугольника\n";
+        cout << "8. Гипотенуза прямоугольного треугольника\n";
 
         // === КОНЕЦ БЛОКА МЕНЮ ===
         cout << "0. Выход\n";
@@ -76,7 +79,16 @@ int main() {
                 }
                 cout << a << " гектаров = " << haToSotka(a) << " соток\n";
                 break;
-        
+            case 7:
+                cout <<	"Введите стороны x и y : ";
+                cin	>> x >> y;
+                cout << "Площадь = " <<	rightTriangleArea(x, y) << "\n";
+                break;
+            case 8:
+                cout << "Введите стороны x и y : ";
+                cin	>> x >> y;
+                cout << "Гипотенуза = "	<< hypotenuse(x, y) << "\n";
+                break;
             // === КОНЕЦ БЛОКА ОБРАБОТКИ ===
             case 0:
                 cout << "Работа завершена.\n";
