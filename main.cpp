@@ -3,27 +3,46 @@
 
 #include <iostream>
 // === БЛОК ПОДКЛЮЧЕНИЙ: каждый участник добавляет свой заголовочный файл ===
-// #include "teplov.h"
-// #include "prokhorov.h"
+#include "teplov.h"
+// #include "prokhorenkov.h"
 // #include "kozlov.h"
 // === КОНЕЦ БЛОКА ПОДКЛЮЧЕНИЙ ===
 using namespace std;
 
 int main() {
     int choice;
+    double t, h;
     do {
         cout << "\n=== Командный проект: сборник расчётов ===\n";
 
         // === БЛОК МЕНЮ: каждый участник добавляет свои пункты ===
-
+        cout << "1. Найти скорость падения\n";
+        cout << "2. Найти высоту падения\n";
+        cout << "3. Найти время падения\n";
         // === КОНЕЦ БЛОКА МЕНЮ ===
-
         cout << "0. Выход\n";
         cout << "Выберите пункт: ";
         cin >> choice; 
 
         switch (choice) {
         // === БЛОК ОБРАБОТКИ: каждый участник добавляет свои case ===
+        case 1:
+            cout << "Введите время t: ";
+            cin >> t;
+            cout << "Скорость v = " << fallSpeed(t) << "\n";
+            break;
+
+        case 2:
+            cout << "Введите время t: ";
+            cin >> t;
+            cout << "Высота h = " << fallHeight(t) << "\n";
+            break;
+
+        case 3:
+            cout << "Введите высоту h: ";
+            cin >> h;
+            cout << "Время падения t = " << fallTime(h) << "\n";
+            break;
         // === КОНЕЦ БЛОКА ОБРАБОТКИ ===
         case 0:
             cout << "Работа завершена.\n";
